@@ -4,6 +4,9 @@ Reference: [go-zero](https://github.com/zeromicro/go-zero)
 
 ### prerequisite
 1. install goctl
+2. install kind as local k8s environment
+   - `kind create cluster`
+   - `kubectx kind-kind`
 
 ### create store api service
 1. create API file (store.api)
