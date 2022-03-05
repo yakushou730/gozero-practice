@@ -5,7 +5,7 @@ type ProductListRequest struct {
 }
 
 type ProductResponse struct {
-	Id   int    `json:"id"`
+	Id   int32  `json:"id"`
 	Name string `json:"name"`
 }
 

@@ -37,3 +37,23 @@ docker run -p 8888:8888 store-api:v1
 > 因為 Tiltfile build image 現在不太會用 先跳過這部分 直接用 build 好的 local image
 > 
 > kind load docker-image store-api:v1
+
+### create product rpc service
+1. create proto file (product.proto)
+```shell
+mkdir product && cd product
+goctl rpc template -o product.proto
+```
+
+2. generate corresponding files
+```shell
+goctl rpc proto -src product.proto -dir ./rpc
+```
+
+3. 建立 product model
+```shell
+# gozero-practice/
+mkdir product/model && touch product/model/product.sql
+cd produc/model
+goctl model mysql ddl -src product.sql -dir . -c
+```

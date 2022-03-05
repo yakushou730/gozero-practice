@@ -3,6 +3,8 @@ package logic
 import (
 	"context"
 
+	"github.com/yakushou730/gozero-practice/product/rpc/product"
+
 	"github.com/yakushou730/gozero-practice/store/api/internal/svc"
 	"github.com/yakushou730/gozero-practice/store/api/internal/types"
 
@@ -24,29 +26,20 @@ func NewGetProductsLogic(ctx context.Context, svcCtx *svc.ServiceContext) GetPro
 }
 
 func (l *GetProductsLogic) GetProducts(req types.ProductListRequest) (*types.ProductListResponse, error) {
-	// temporary hardcoded for development
+	productListResponse, err := l.svcCtx.ProductRpc.ProductList(l.ctx, &product.ProductListRequest{})
+	if err != nil {
+		return nil, err
+	}
+
+	var productList []types.ProductResponse
+	for _, p := range productListResponse.ProductItems {
+		productList = append(productList, types.ProductResponse{
+			Id:   p.GetId(),
+			Name: p.GetName(),
+		})
+	}
+
 	return &types.ProductListResponse{
-		Products: []types.ProductResponse{
-			{
-				Id:   1,
-				Name: "Product 1",
-			},
-			{
-				Id:   2,
-				Name: "Product 2",
-			},
-			{
-				Id:   3,
-				Name: "Product 3",
-			},
-			{
-				Id:   4,
-				Name: "Product 4",
-			},
-			{
-				Id:   5,
-				Name: "Product 5",
-			},
-		},
+		Products: productList,
 	}, nil
 }
