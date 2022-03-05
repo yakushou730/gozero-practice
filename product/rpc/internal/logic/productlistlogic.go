@@ -24,7 +24,19 @@ func NewProductListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Produ
 }
 
 func (l *ProductListLogic) ProductList(in *product.ProductListRequest) (*product.ProductListResponse, error) {
-	// todo: add your logic here and delete this line
+	// temporary hardcoded for development
+	productItems := []*product.ProductItem{
+		{
+			Id:   1,
+			Name: "product A",
+		},
+		{
+			Id:   2,
+			Name: "product B",
+		},
+	}
 
-	return &product.ProductListResponse{}, nil
+	return &product.ProductListResponse{
+		ProductItems: productItems,
+	}, nil
 }
