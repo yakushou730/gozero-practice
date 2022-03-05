@@ -1,0 +1,24 @@
+syntax = "v1"
+
+info (
+	title: "store api server"
+	desc: "store api server"
+	author: "Shou Tseng"
+	email: "yakushou730@gmail.com"
+)
+
+type ProductListRequest {}
+
+type ProductResponse {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+type ProductListResponse {
+	Products []ProductResponse `json:"products"`
+}
+
+service store-api {
+	@handler GetProducts
+	get /products (ProductListRequest) returns (ProductListResponse)
+}
