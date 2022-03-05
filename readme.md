@@ -19,3 +19,12 @@ goctl api go -api store.api -dir api
 ```shell
 go run api/store.go -f api/etc/store-api.yaml
 ```
+4. containerize store api service
+```shell
+cd api
+goctl docker -go store.go -port 8888
+
+# 回到 gozero-practice
+docker build -t store-api:v1 -f store/api/Dockerfile .
+docker run -p 8888:8888 store-api:v1
+```
