@@ -57,3 +57,13 @@ mkdir product/model && touch product/model/product.sql
 cd produc/model
 goctl model mysql ddl -src product.sql -dir . -c
 ```
+
+4. containerize product api service
+```shell
+cd rpc
+goctl docker -go product.go -port 8081
+
+# 回到 gozero-practice
+docker build -t product-api:v1 -f product/rpc/Dockerfile .
+docker run -p 8081:8081 product-rpc:v1
+```

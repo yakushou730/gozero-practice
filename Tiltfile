@@ -7,3 +7,6 @@ print("hello tilt")
 
 k8s_yaml('store/api/k8s.yaml')
 k8s_resource('store-api', port_forwards=8888)
+
+k8s_yaml('product/rpc/k8s.yaml')
+k8s_resource('product-rpc', port_forwards=8081)

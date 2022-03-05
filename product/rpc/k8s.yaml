@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-rpc
+  labels:
+    app: product-rpc
+spec:
+  selector:
+    matchLabels:
+      app: product-rpc
+  template:
+    metadata:
+      labels:
+        app: product-rpc
+    spec:
+      containers:
+        - name: product-rpc
+          image: product-rpc:v1
+          ports:
+            - containerPort: 8081
