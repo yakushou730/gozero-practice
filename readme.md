@@ -28,3 +28,9 @@ goctl docker -go store.go -port 8888
 docker build -t store-api:v1 -f store/api/Dockerfile .
 docker run -p 8888:8888 store-api:v1
 ```
+5. 加入 Tiltfile [reference](https://docs.tilt.dev/example_go.html)
+- 設定 k8s.yaml (deployment)
+
+> 因為 Tiltfile build image 現在不太會用 先跳過這部分 直接用 build 好的 local image
+> 
+> kind load docker-image store-api:v1
