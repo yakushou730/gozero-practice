@@ -47,7 +47,7 @@ goctl rpc template -o product.proto
 
 2. generate corresponding files
 ```shell
-goctl rpc proto -src product.proto -dir rpc/
+goctl rpc proto -src product.proto -dir ./rpc
 ```
 
 3. 建立 product model
