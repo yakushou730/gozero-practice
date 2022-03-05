@@ -49,3 +49,11 @@ goctl rpc template -o product.proto
 ```shell
 goctl rpc proto -src product.proto -dir rpc/
 ```
+
+3. 建立 product model
+```shell
+# gozero-practice/
+mkdir product/model && touch product/model/product.sql
+cd produc/model
+goctl model mysql ddl -src product.sql -dir . -c
+```
